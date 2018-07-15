@@ -7,6 +7,7 @@ client = discord.Client()
 channel = None
 
 def send_image(filename):
+    global channel
     if channel is not None:
         print('Sending image...')
         client.send_message(channel, 'Detected a face')
@@ -23,11 +24,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global channel
     if message.content.startswith('!enable'):
         channel = message.channel
-        await client.send_message(message.channel, 'Enabling camera...')
+        await client.send_message(channel, 'Enabling camera...')
     elif message.content.startswith('!disable'):
         channel = None
-        await client.send_message(message.channel, 'Disabling camera...')
+        await client.send_message(channel, 'Disabling camera...')
 
 _thread.start_new_thread(client.run, ('NDY1NjQ5ODkyNzY1NzI4Nzc4.DiuiSg.sbOP4SJbOaszX9qmqr6FTxgmytU',))
