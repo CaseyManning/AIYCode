@@ -19,6 +19,8 @@ from aiy.vision.models import face_detection
 from picamera import PiCamera
 import time
 
+import discordcode
+
 lastSaveTime = time.time() - 60
 
 def main():
@@ -33,7 +35,8 @@ def main():
             for result in inference.run():
                 if len(face_detection.get_faces(result)) >= 1 and time.time() - lastSaveTime > 60:
                     print('yay, we got an image')
-                    camera.capture('faces.jpg')
+                    camera.capture('image.jpg')
+                    discordcode.send_image('image.jpg')
                     lastSaveTime = time.time()
 
 
