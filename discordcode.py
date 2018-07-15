@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import _thread
 
 client = discord.Client()
 
@@ -25,4 +26,4 @@ async def on_message(message):
         channel = None
         await client.send_message(message.channel, 'Disabling camera...')
 
-client.run('NDY1NjQ5ODkyNzY1NzI4Nzc4.DiuiSg.sbOP4SJbOaszX9qmqr6FTxgmytU')
+_thread.start_new_thread(client.run, ('NDY1NjQ5ODkyNzY1NzI4Nzc4.DiuiSg.sbOP4SJbOaszX9qmqr6FTxgmytU',))
