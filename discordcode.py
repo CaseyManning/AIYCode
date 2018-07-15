@@ -7,8 +7,12 @@ client = discord.Client()
 channel = None
 
 def send_image(filename):
-    if not channel is None:
+    if channel is not None:
+        print('Sending image...')
+        client.send_message(channel, 'Detected a face')
         client.send_file(channel, filename)
+    else:
+        print('Channel is None... have you enabled the bot?')
 
 @client.event
 async def on_ready():
